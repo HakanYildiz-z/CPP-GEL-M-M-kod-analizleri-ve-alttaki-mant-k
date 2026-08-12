@@ -1,5 +1,10 @@
 // ------ RAII tabanlı C++ dosya yöneticisi ------
 
+// 10 saniyede bir sıcaklık ve hız değerlerini bir dosya açıp ona aktaran bir kod yazdım.
+// sıcaklık ve hız değerlerini sensörden alabilirdik fakat sensöre bağlamadan çalışma mantığını anlamak için böyle yazdım.
+// iskelet bir koddur gerçek hayat uygulamalarına kolayca entegre edilebilir.
+// dosya kapatma (fclose) ve dosyanoin sahipliğini kopyalanamaz şekilde tekilleştirme yapmak için uniqueptr kullandım.
+
 #include <iostream> // giriş çıkış streamı dır. std::cout gibi nesneleri kontrol etmemizi sağlar.
 #include<memory>    // std::uniqueptr kullanmamızı sağlar.
 #include<cstdio>    // dosya yönetimi için gerekli olan std::fopen std::fprint gibi komutların kullanımına imkan tanır.
@@ -100,4 +105,3 @@ int main() {
 return 0;
 
 }
-
