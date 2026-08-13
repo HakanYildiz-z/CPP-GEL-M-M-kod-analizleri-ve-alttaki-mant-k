@@ -10,3 +10,8 @@ Bilgisayarın belleği ram iki ana yönetim merkezine ayrılır.
 
 Uniqueptr de bizim işimiz heap üzerinde yapılacak olan bellek atamasıdır. std::unique_ptr tekil akıllı işaretçidir. tek bir değişkene belirlenmiş bir adresin kullanım hakkını verir ve başka bir değişken ile bu adrese ne ulaşabiliriz nede bunu kopyalayabiliriz. sadece std::move ile taşıma yapabiliriz.
 std::unique_ptr bir yana kendi akıllı işaretçi kütüphanemizi de yazabiliriz. genelde projelerde cpp ye ait olan std::unique_ptr yi kullanırız. yani tekerleği zaten icat etmişkler yeniden icat etmeye veya element uydurmaya gerek yok. 
+
+
+sharedptr uniqueptr nin tam aksine tek bir sahipliğe dayanmaz birçok değişken tarafından sahiplenilir ki tam da bunu yapması için bunu yazarız. paylaşımlı ve kopyalanabilir olması birçok güvenlik problemini ve ver sızıntısı ihtimalini içeriz kesinlikle güvenli değildir. 
+birden fazla modül aynı veriye erişmesi gerekir o yüzden std::shared_ptr kulanırız. her bir kullanımda std::shared_ptr içinde yer alan sayaç bir artar. modülün işi bittiğinde elindeki paylaşılmış olan kopyayı sildiğinde sayaçtaki o artış tersine döner ve azalır ne zaman ki sayaç sıfıra geldi akıllı ptr kendini otomatik olarak siler.
+Bazen iki shared_ptr iç içe yazılınca sayaca bağlı olan silme sistemi yüzünden problem yaşanabiliyor. Bu sebeple std::weak_ptr yi kullanıyoruz temel mantık aynı sadece sayacı arttırmadan kopyalamaya imkan tanıyor. fakat bu weak kaynağa erişmek için lock() fonksiyonu ile geçici bir shared_ptr oluşturur ve kaynağın silinip silinmediğini expired() fonksiyonu ile kontrol ediyoruz.
