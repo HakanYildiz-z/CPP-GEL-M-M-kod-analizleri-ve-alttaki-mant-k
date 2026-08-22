@@ -9,8 +9,9 @@
 #include<algorithm>    // büyüklüğe göre sıralama eleman arama eleman değiştyirme gibi bir çok görevi üstlenir
 
 class sekil {
-public:                         // kısaca virtual fonksiyonların çalışma anında tetikleneceğini söyler bunun sayesinde dinamik olarak uygun fonksiyonlar çalıştırılır.
+public:                         //virtual fonksiyonların çalışma anında tetikleneceğini söyler bunun sayesinde dinamik olarak uygun fonksiyonlar çalıştırılır.
     virtual ~sekil() = default; // polimorfizm kuralları gereği virtual zorunludur fakat = default; yerine {} koyabiliriz.
+
     // sanal fonksiyonlarımızı yazıyoruz. bunların herbiri her alt sınıfta yeniden ve daha farklı olarak yazılıcak
     virtual double hacim_hesapla() const = 0;   // 0 bu fonksiyonu gövdesiz bırakarak soyut komuta merkezi haline getirir. buna saf sanal fonksiyon denir.
     virtual void bilgi_yazdir() const = 0;
@@ -27,7 +28,7 @@ public:
         return std::pow(kenar,3);   // std::pow(x,3) matematikte kuvvet alma işlemidir x in 3. kuvvetini alır.
     }
     void bilgi_yazdir() const override {    // override bu fonksiyonun bir sanal fonksiyondan türediğini söylüyor.
-        std::cout << "kenar uzunluğu :" << kenar << "hacim degeri :" << hacim_hesapla() << "\n";
+        std::cout << "kenar uzunlugu :" << kenar << "hacim degeri :" << hacim_hesapla() << "\n";
     }
 };
 
@@ -86,7 +87,7 @@ int main() {
             return a -> hacim_hesapla() > b -> hacim_hesapla();
         });
 
-    std::cout << "kup ve kurelerin hacimlerine göre sıralanmış hali \n";
+    std::cout << "kup ve kurelerin hacimlerine gore siralanmis hali \n";
 
     for (const auto& sekil : sekiller) {
         sekil -> bilgi_yazdir();
