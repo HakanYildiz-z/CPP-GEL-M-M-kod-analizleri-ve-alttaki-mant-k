@@ -1,5 +1,5 @@
 //#################################################################################################################################
-//       HCİME GÖRE SIRALAMA İŞLEMLERİ.   polimorfizm ile küp küreleri hacimlendirip sonrasında bunların hacimlerine göre sıralıyoruz.
+//       HACİME GÖRE SIRALAMA İŞLEMLERİ.   polimorfizm ile küp küreleri hacimlendirip sonrasında bunların hacimlerine göre sıralıyoruz.
 //#################################################################################################################################
 
 #include<iostream>     // giriş çıkış kütüphanesi
